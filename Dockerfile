@@ -1,6 +1,6 @@
 FROM node:10 as builder 
 
-WORKDIR /usr/src/app
+WORKDIR '/usr/src/app'
 
 COPY package.json .
 

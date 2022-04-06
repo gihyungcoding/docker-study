@@ -7,12 +7,13 @@ services:
 
 before_install:
   - echo "start creating an image with dockerfile"
-  - docker build -t skrmskdl2/docker-react-app -f Dockerfile .
+  - docker build -t skrmskdl2/docker-react-app -f Dockerfile.dev .
 
 script:
   - docker run -e CI=true skrmskdl2/docker-react-app npm run test -- --coverage
   
 deploy:
+  edge: true
   provider: elasticbeanstalk
   region: "ap-northeast-2"
   app: "docker-react-01"
@@ -23,4 +24,4 @@ deploy:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_ACCESS_KEY
-
+  
